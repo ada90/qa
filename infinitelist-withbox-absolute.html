@@ -1,0 +1,115 @@
+<html class="pixel-ratio-1 watch-active-state"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <script src="js/zepto.min.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/preload.css">
+    <style>
+        .views, .view {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+        }
+        .outBox{
+            position: absolute;
+            box-sizing: border-box;
+            width: 100%;
+
+            height: 100%;
+            padding: 44px 0;
+
+        }
+        .inBox{
+            height: 100%;
+            overflow-y: auto;
+        }
+        .navbar,.toolbar{
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+            background: #ccc;
+            color: #fff;
+            text-align: center;
+            z-index: 999;
+        }
+        .navbar{
+            top: 0;
+        }
+        .toolbar{
+            bottom: 0;
+        }
+    </style>
+</head>
+<body >
+<div class="navbar">navbar</div>
+<div class="toolbar">toolbar</div>
+<div class="views">
+    <div class="view">
+        <div class="outBox">
+            <div class="inBox">
+                <div class="list-block media-list">
+                    <ul class="time-line-content">
+
+
+
+                        <!--<li data-id="41" class="item-content card-content">-->
+                            <!--<div class="item-inner">-->
+                                <!--<div class="item-header">-->
+                                    <!--<div class="avatar">-->
+                                        <!--<img data-avatarid="01" src="style/img/avatar/avatar01.jpg">-->
+                                    <!--</div>-->
+                                    <!--<div class="detail">-->
+                                        <!--<p class="nickname">Bob Brownid:41</p>-->
+                                        <!--<p data-time="1404709434" class="create-time">2014-07-07 13:03</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="click-content">-->
+
+                                    <!--<div class="item-subtitle">-->
+                                        <!--Behind every successful man there's a lot u unsuccessful years. <a href="#" onclick="event.stopPropagation();window.open('http://goo.gl/','_blank')">http://goo.gl/</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+
+
+                    </ul>
+
+                </div>
+                <div class="infinite-scroll-preloader">
+                    <div class="preloader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+
+
+    timelineView.init(".inBox");
+
+    $(".inBox").on("scroll",function(){
+
+        var sH = this.scrollHeight; //元素内滚动内容的正文高度
+        var sT = this.scrollTop;    //元素内滚动内容顶部与元素顶部距离
+        var wH = $(window).height() + 88; // 头尾高度
+
+        var scrollBottom = sH - sT - wH;
+        if(scrollBottom <= 0){
+            console.log("到底部啦");
+            timelineView.infinitusLoad();
+        }
+    })
+
+</script>
+</body></html>
