@@ -1,4 +1,3 @@
-//from hi-app
 {
     "err_code": 0,
     "err_msg": "success",
@@ -99,5 +98,6 @@
             "original_pic": "",
             "created_at": "1404704742"
         }
-    ]
+    ],
+    "comment": "data from hi-app"
 }

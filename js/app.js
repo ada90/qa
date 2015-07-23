@@ -66,7 +66,6 @@ var timelineView = {
             method: 'get',
             data: '',
             success:function(data){
-
                 if(typeof data != "object"){
 
                     data = data ? JSON.parse(data) : '';
